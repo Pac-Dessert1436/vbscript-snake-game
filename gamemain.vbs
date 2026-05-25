@@ -59,7 +59,7 @@ End Sub
 Sub Update(dt)
     Dim i, head, newHead
     If gameOver Then
-        If AppMain.Instance.IsKeyHeld(Keys.Space) Then ResetGame
+        If AppMain.Instance.IsKeyDown(Keys.Space) Then ResetGame
         Exit Sub
     End If
     HandleInput
@@ -99,13 +99,13 @@ Sub HandleInput()
     Set newDir = snakeDirection
     
     With AppMain.Instance
-        If .IsKeyHeld(Keys.Left) Or .IsKeyHeld(Keys.A) Then
+        If .IsKeyDown(Keys.Left) Or .IsKeyDown(Keys.A) Then
             Set newDir = Vec2i.Create(-1, 0)
-        ElseIf .IsKeyHeld(Keys.Right) Or .IsKeyHeld(Keys.D) Then
+        ElseIf .IsKeyDown(Keys.Right) Or .IsKeyDown(Keys.D) Then
             Set newDir = Vec2i.Create(1, 0)
-        ElseIf .IsKeyHeld(Keys.Up) Or .IsKeyHeld(Keys.W) Then
+        ElseIf .IsKeyDown(Keys.Up) Or .IsKeyDown(Keys.W) Then
             Set newDir = Vec2i.Create(0, -1)
-        ElseIf .IsKeyHeld(Keys.Down) Or .IsKeyHeld(Keys.S) Then
+        ElseIf .IsKeyDown(Keys.Down) Or .IsKeyDown(Keys.S) Then
             Set newDir = Vec2i.Create(0, 1)
         End If
     End With

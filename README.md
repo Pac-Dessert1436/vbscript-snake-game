@@ -2,6 +2,8 @@
 
 A classic Snake game reimagined using VBScript, powered by the VBScript game engine known as [vbs-revive](https://github.com/Pac-Dessert1436/vbs-revive) for modern graphics and audio capabilities. _The game engine is not included in the project and must be downloaded separately._
 
+> **Update on May 25 2026**: Changed `IsKeyHeld` method calls into `IsKeyDown` (maintaining the same functionality), and upgraded the engine's executable to version 1.0.2.
+
 ![Game Screenshot](screenshot.png)
 
 ## Features
@@ -16,7 +18,7 @@ A classic Snake game reimagined using VBScript, powered by the VBScript game eng
 ## Requirements
 
 - Windows operating system
-- `vbs-revive.exe` (version 1.0.1, stable release)
+- `vbs-revive.exe` (version 1.0.2, stable release)
 
 ## How to Play
 
