@@ -3,7 +3,9 @@ Dim fntGame, bgmMainTheme, sndFood, sndDeath, imgRedApple
 Const CELL_SIZE = 15
 Const GRID_WIDTH = 50
 Const GRID_HEIGHT = 36
-Const MOVE_INTERVAL = 0.15
+Const BASE_MOVE_INTERVAL = 0.15 
+Const MIN_MOVE_INTERVAL = 0.05  
+Const SPEED_INCREASE_PER_SEGMENT = 0.005  
 
 Dim snake, snakeDirection, food, score, gameOver, moveTimer
 
@@ -57,15 +59,19 @@ Sub SpawnFood()
 End Sub
 
 Sub Update(dt)
-    Dim i, head, newHead
+    Dim i, head, newHead, currentMoveInterval
     If gameOver Then
         If AppMain.Instance.IsKeyDown(Keys.Space) Then ResetGame
         Exit Sub
     End If
     HandleInput
+    
+    currentMoveInterval = BASE_MOVE_INTERVAL - (snake.Count - 3) * SPEED_INCREASE_PER_SEGMENT
+    If currentMoveInterval < MIN_MOVE_INTERVAL Then currentMoveInterval = MIN_MOVE_INTERVAL
+    
     moveTimer = moveTimer + dt
-    If moveTimer >= MOVE_INTERVAL Then
-        moveTimer = moveTimer - MOVE_INTERVAL
+    If moveTimer >= currentMoveInterval Then
+        moveTimer = moveTimer - currentMoveInterval
         
         Set head = snake(0)
         Set newHead = Vec2i.Create(head.X + snakeDirection.X, head.Y + snakeDirection.Y)
